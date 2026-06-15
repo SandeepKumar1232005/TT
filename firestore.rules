@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Lock down all collections from direct client read/write access.
+    // The backend uses Firebase Admin SDK (which bypasses security rules),
+    // ensuring all user submissions are validated and sanitized via API routes.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

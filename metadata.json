@@ -1,0 +1,6 @@
+{
+  "name": "Vedan Travels",
+  "description": "Coimbatore's trusted travel partner for safe, comfortable, and affordable outstation rides.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
