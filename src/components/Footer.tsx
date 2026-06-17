@@ -9,6 +9,7 @@ import {
   MessageCircle 
 } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import { BUSINESS } from '../lib/constants';
 
 export default function Footer() {
   const { language } = useLanguage();
@@ -58,7 +59,7 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex space-x-4">
               <a 
-                href="https://instagram.com" 
+                href={BUSINESS.social.instagram} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="h-9 w-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-gold hover:border-gold/30 transition-all cursor-pointer"
@@ -66,7 +67,7 @@ export default function Footer() {
                 <Instagram className="w-4 h-4" />
               </a>
               <a 
-                href="https://facebook.com" 
+                href={BUSINESS.social.facebook} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="h-9 w-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-gold hover:border-gold/30 transition-all cursor-pointer"
@@ -74,7 +75,7 @@ export default function Footer() {
                 <Facebook className="w-4 h-4" />
               </a>
               <a 
-                href="https://youtube.com" 
+                href={BUSINESS.social.youtube} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="h-9 w-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-gold hover:border-gold/30 transition-all cursor-pointer"
@@ -144,22 +145,20 @@ export default function Footer() {
               <li className="flex items-start space-x-2.5">
                 <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                 <span>
-                  {language === 'ta' 
-                    ? 'வேதன் டிராவல்ஸ், அவினாசி ரோடு, கோயம்புத்தூர், தமிழ்நாடு - 641018' 
-                    : 'Vedan Travels, Avinashi Road, Coimbatore, Tamil Nadu - 641018'}
+                  {language === 'ta' ? BUSINESS.address.ta : BUSINESS.address.en}
                 </span>
               </li>
               <li className="flex items-center space-x-2.5 font-mono">
                 <Phone className="w-4 h-4 text-gold shrink-0" />
-                <a href="tel:+919363499428" className="hover:text-gold transition-colors">+91 93634 99428</a>
+                <a href={`tel:${BUSINESS.phone}`} className="hover:text-gold transition-colors">{BUSINESS.phoneDisplay}</a>
               </li>
               <li className="flex items-center space-x-2.5">
                 <Mail className="w-4 h-4 text-gold shrink-0" />
-                <a href="mailto:vedantravels.booking@gmail.com" className="hover:text-gold transition-colors">vedantravels.booking@gmail.com</a>
+                <a href={`mailto:${BUSINESS.email}`} className="hover:text-gold transition-colors">{BUSINESS.email}</a>
               </li>
               <li className="pt-2">
                 <a
-                  href="https://wa.me/919363499428?text=Hello%20Vedan%20Travels"
+                  href={`https://wa.me/${BUSINESS.whatsapp}?text=Hello%20Vedan%20Travels`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 px-3 py-1.5 rounded bg-green-500/10 border border-green-500/20 text-xs text-white hover:bg-green-500/20 transition-all font-medium"

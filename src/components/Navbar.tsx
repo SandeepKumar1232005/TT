@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, MessageCircle, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import { BUSINESS } from '../lib/constants';
 
 interface NavbarProps {
   onBookClick: () => void;
@@ -129,7 +130,7 @@ export default function Navbar({ onBookClick }: NavbarProps) {
             <div className="hidden lg:flex items-center space-x-3">
               {/* WhatsApp Integration */}
               <a
-                href="https://wa.me/919363499428?text=Hello%20Vedan%20Travels,%20I'm%20interested%20in%20booking%20a%20luxury%20chauffeur%20service."
+                href={`https://wa.me/${BUSINESS.whatsapp}?text=Hello%20Vedan%20Travels,%20I'm%20interested%20in%20booking%20a%20trip.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 px-4 py-2 border border-gold/25 hover:border-gold/60 text-gray-200 hover:text-white rounded-full bg-luxury-dark/40 hover:bg-gold/10 transition-all duration-300 text-sm font-medium"
@@ -193,7 +194,7 @@ export default function Navbar({ onBookClick }: NavbarProps) {
           
           <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 pt-3">
             <a
-              href="https://wa.me/919363499428?text=Hello%20Vedan%20Travels,%20I'm%20interested%20in%20booking%20a%20luxury%20ride."
+              href={`https://wa.me/${BUSINESS.whatsapp}?text=Hello%20Vedan%20Travels,%20I'm%20interested%20in%20booking%20a%20ride.`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center space-x-2 px-4 py-2.5 border border-gold/25 rounded-md text-gray-200 bg-luxury-dark/60 hover:bg-gold/10 text-sm font-medium"

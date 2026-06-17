@@ -38,6 +38,8 @@ export interface Destination {
   description: string;
   image: string;
   distanceFromBase: number;
+  estimatedTravelTime: string;
+  availableVehicleTypes: string[];
   popularAttractions: string[];
 }
 
@@ -50,6 +52,19 @@ export interface Testimonial {
   avatar: string;
   tripType: string;
   verifiedRoute: string;
+}
+
+/**
+ * Review type for future Firebase-backed customer reviews.
+ * Currently stored in JSON. Ready to migrate to Firestore.
+ */
+export interface Review {
+  id: string;
+  name: string;
+  route: string;
+  review: string;
+  rating: number;
+  createdAt?: string;
 }
 
 export interface Booking {

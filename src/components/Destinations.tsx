@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, Compass } from 'lucide-react';
+import { ArrowUpRight, Compass, Clock, Car } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 interface DestinationsProps {
@@ -46,6 +46,7 @@ export default function Destinations({ onDestinationSelect }: DestinationsProps)
                   src={dest.image}
                   alt={dest.name}
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
                 />
                 {/* Visual shade overlays simulating dusky travel */}
@@ -61,7 +62,7 @@ export default function Destinations({ onDestinationSelect }: DestinationsProps)
                     <Compass className="w-3.5 h-3.5 text-gold" />
                     <span className="text-[10px] font-mono text-gray-300 font-medium tracking-wide">
                       {dest.distanceFromBase > 0 
-                        ? (language === 'ta' ? `~${dest.distanceFromBase} கி.மீ தொலைவு` : `~${dest.distanceFromBase} km distance`)
+                        ? (language === 'ta' ? `~${dest.distanceFromBase} கி.மீ` : `~${dest.distanceFromBase} km`)
                         : (language === 'ta' ? 'முதன்மை மையம்' : 'Focal Hub')
                       }
                     </span>
@@ -86,6 +87,22 @@ export default function Destinations({ onDestinationSelect }: DestinationsProps)
                   <p className="text-gray-300 text-xs font-light leading-relaxed opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-20 overflow-hidden transition-all duration-500">
                     {dest.description}
                   </p>
+
+                  {/* Travel time + vehicle types info */}
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    {dest.estimatedTravelTime && (
+                      <span className="flex items-center space-x-1 text-[9px] bg-gold/10 border border-gold/20 px-2.5 py-1 rounded text-gold-light font-mono font-semibold">
+                        <Clock className="w-3 h-3" />
+                        <span>{dest.estimatedTravelTime}</span>
+                      </span>
+                    )}
+                    {dest.availableVehicleTypes && dest.availableVehicleTypes.length > 0 && (
+                      <span className="flex items-center space-x-1 text-[9px] bg-white/5 border border-white/10 px-2.5 py-1 rounded text-gray-400 font-mono">
+                        <Car className="w-3 h-3" />
+                        <span>{dest.availableVehicleTypes.slice(0, 3).join(', ')}</span>
+                      </span>
+                    )}
+                  </div>
 
                   {/* Highlights attractions chips */}
                   <div className="flex flex-wrap gap-1.5 pt-1">

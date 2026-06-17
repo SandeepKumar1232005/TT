@@ -187,6 +187,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'Ride up the beautiful mountains from Coimbatore. Enjoy fresh air, tea gardens, and cold weather.',
     image: '/images/ooty.png',
     distanceFromBase: 86,
+    estimatedTravelTime: '~2.5 hrs',
+    availableVehicleTypes: ['Sedan', 'SUV', 'Innova'],
     popularAttractions: ['Botanical Gardens', 'Ooty Lake Boating', 'Doddabetta Peak View', 'Pykara Waterfalls']
   },
   {
@@ -196,6 +198,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'A quiet mountain town with a beautiful lake and tall pine trees. Perfect place to relax with your family.',
     image: '/images/kodaikanal.png',
     distanceFromBase: 172,
+    estimatedTravelTime: '~4.5 hrs',
+    availableVehicleTypes: ['Sedan', 'SUV', 'Innova', 'Innova Crysta'],
     popularAttractions: ['Kodaikanal Star Lake', 'Pine Forest', 'Coakers Walkway', 'Pillar Rocks View']
   },
   {
@@ -205,6 +209,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'Beautiful green hills covered with tea plants. Cross into Kerala in a comfortable car.',
     image: '/images/munnar.png',
     distanceFromBase: 156,
+    estimatedTravelTime: '~4 hrs',
+    availableVehicleTypes: ['Sedan', 'SUV', 'Innova', 'Innova Crysta'],
     popularAttractions: ['Eravikulam National Park', 'Mattupetty Dam', 'ECHO Point', 'Anamudi Peak']
   },
   {
@@ -214,6 +220,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'Travel on the smooth highway from Coimbatore to Bangalore for business or holidays.',
     image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&q=80&w=800',
     distanceFromBase: 365,
+    estimatedTravelTime: '~6.5 hrs',
+    availableVehicleTypes: ['Sedan', 'SUV', 'Innova', 'Innova Crysta', 'Tempo Traveller'],
     popularAttractions: ['Bangalore Palace', 'Lalbagh Botanical Gardens', 'Vidhana Soudha', 'Cubbon Park']
   },
   {
@@ -223,6 +231,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'Travel from Coimbatore to Chennai comfortably check out the historic cities and beach side.',
     image: '/images/chennai.png',
     distanceFromBase: 505,
+    estimatedTravelTime: '~8 hrs',
+    availableVehicleTypes: ['Sedan', 'SUV', 'Innova', 'Innova Crysta', 'Tempo Traveller'],
     popularAttractions: ['Marina Beach', 'Kapaleeshwarar Temple', 'San Thome Basilica', 'Mahabalipuram Shore Temples']
   },
   {
@@ -232,6 +242,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'Visit the famous Meenakshi Amman Temple and other ancient places in Madurai.',
     image: '/images/madurai.png',
     distanceFromBase: 190,
+    estimatedTravelTime: '~4 hrs',
+    availableVehicleTypes: ['Sedan', 'SUV', 'Innova', 'Innova Crysta'],
     popularAttractions: ['Meenakshi Amman Temple', 'Thirumalai Nayakkar Palace', 'Gandhi Memorial Museum']
   },
   {
@@ -241,6 +253,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'A comfortable ride from Coimbatore to Mysore to see beautiful palaces, gardens and heritage sites.',
     image: '/images/mysore.png',
     distanceFromBase: 200,
+    estimatedTravelTime: '~5 hrs',
+    availableVehicleTypes: ['Sedan', 'SUV', 'Innova', 'Innova Crysta'],
     popularAttractions: ['Mysore Palace', 'Chamundi Hills Temple', 'Brindavan Gardens', 'Srirangapatna Heritage']
   },
   {
@@ -250,6 +264,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'Visit the sacred island of Rameswaram and ride across the famous Pamban Bridge.',
     image: '/images/rameswaram.png',
     distanceFromBase: 340,
+    estimatedTravelTime: '~7 hrs',
+    availableVehicleTypes: ['Sedan', 'SUV', 'Innova', 'Innova Crysta', 'Tempo Traveller'],
     popularAttractions: ['Ramanathaswamy Temple', 'Agni Theertham Beach', 'Dhanushkodi Ghost Town', 'Pamban Sea Bridge view']
   },
   {
@@ -259,6 +275,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'Enjoy the water lagoons, beautiful beaches, and historic streets of Fort Kochi.',
     image: '/images/kochi.png',
     distanceFromBase: 190,
+    estimatedTravelTime: '~4.5 hrs',
+    availableVehicleTypes: ['Sedan', 'SUV', 'Innova', 'Innova Crysta'],
     popularAttractions: ['Fort Kochi Chinese Nets', 'Mattancherry Palace', 'Marine Drive Backwater walk', 'Willingdon Island']
   },
   {
@@ -268,6 +286,8 @@ export const DESTINATIONS: Destination[] = [
     description: 'A smooth highway trip from Coimbatore directly to Hyderabad, famous for food and monuments.',
     image: '/images/hyderabad.png',
     distanceFromBase: 920,
+    estimatedTravelTime: '~14 hrs',
+    availableVehicleTypes: ['Innova', 'Innova Crysta', 'Tempo Traveller'],
     popularAttractions: ['Charminar', 'Golconda Fort', 'Ramoji Film City', 'Birla Mandir']
   }
 ];

@@ -5,6 +5,7 @@ import { Calendar, Clock, MapPin, Users, Phone, CheckCircle, MessageSquare, Shie
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 import VehicleImage from './VehicleImage';
+import { BUSINESS } from '../lib/constants';
 
 interface BookingWidgetProps {
   preselectedVehicleId?: string;
@@ -21,6 +22,7 @@ export default function BookingWidget({ preselectedVehicleId, selectedServiceNam
   const [pickup, setPickup] = useState('');
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
   const [passengers, setPassengers] = useState(1);
   const [specialRequirements, setSpecialRequirements] = useState('');
   const [selectedVehicleId, setSelectedVehicleId] = useState(translatedVehicles[0].id);
@@ -80,6 +82,7 @@ export default function BookingWidget({ preselectedVehicleId, selectedServiceNam
           pickup,
           destination,
           date,
+          time,
           passengers: Number(passengers),
           specialRequirements,
           selectedVehicleId
@@ -122,6 +125,7 @@ export default function BookingWidget({ preselectedVehicleId, selectedServiceNam
     setDestination('');
     setSpecialRequirements('');
     setDate('');
+    setTime('');
     setConfirmedBooking(null);
   };
 
@@ -236,8 +240,8 @@ export default function BookingWidget({ preselectedVehicleId, selectedServiceNam
                     </div>
                   </div>
 
-                  {/* Date & Passengers count */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Date, Time & Passengers count */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-gold mb-2 flex items-center">
                         <Calendar className="w-3.5 h-3.5 mr-1 text-gold" /> {t('booking.form.date')}
@@ -247,6 +251,18 @@ export default function BookingWidget({ preselectedVehicleId, selectedServiceNam
                         required
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
+                        className="w-full bg-luxury-gray/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold/60 transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-gold mb-2 flex items-center">
+                        <Clock className="w-3.5 h-3.5 mr-1 text-gold" /> {language === 'ta' ? 'பயண நேரம்' : 'Travel Time'}
+                      </label>
+                      <input
+                        type="time"
+                        value={time}
+                        onChange={(e) => setTime(e.target.value)}
                         className="w-full bg-luxury-gray/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold/60 transition-colors"
                       />
                     </div>
