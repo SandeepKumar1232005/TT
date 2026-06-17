@@ -53,7 +53,7 @@ export default function BookingWidget({ preselectedVehicleId, selectedServiceNam
 
   const activeVehicle = translatedVehicles.find((v) => v.id === selectedVehicleId) || translatedVehicles[0];
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(null);
 
@@ -70,52 +70,47 @@ export default function BookingWidget({ preselectedVehicleId, selectedServiceNam
 
     setIsSubmitting(true);
 
-    try {
-      const response = await fetch('/api/bookings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          phone: phoneDigits,
-          pickup,
-          destination,
-          date,
-          time,
-          passengers: Number(passengers),
-          specialRequirements,
-          selectedVehicleId
-        }),
-      });
+    // Generate WhatsApp Message client-side for instant redirect
+    const messageText = `Hello VEDAN TRAVELS,\n\nI would like to enquire about a trip.\n\nName: ${name}\nPhone: ${phone}\nPickup Location: ${pickup}\nDestination: ${destination}\nTravel Date: ${date}\nTravel Time: ${time || 'Not specified'}\nPassengers: ${passengers}\nSpecial Requirements: ${specialRequirements || 'None'}\n\nPlease contact me regarding this booking.`;
 
-      const data = await response.json();
+    const encodedMessage = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${encodedMessage}`;
 
-      if (response.ok && data.success) {
-        const bookingRecord = {
-          id: data.bookingId,
-          name: data.data.name,
-          pickup: data.data.pickupLocation,
-          destination: data.data.destination,
-          date: data.data.travelDate,
-          whatsappUrl: data.whatsappUrl
-        };
-        setConfirmedBooking(bookingRecord);
-        onBookingSuccess(bookingRecord);
+    // Send the data to API in background without blocking the redirect
+    fetch('/api/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        phone: phoneDigits,
+        pickup,
+        destination,
+        date,
+        time,
+        passengers: Number(passengers),
+        specialRequirements,
+        selectedVehicleId
+      }),
+    }).catch(err => console.error('Booking sync failed:', err));
 
-        // Direct redirect to WhatsApp to bypass popup blockers in async handlers
-        if (data.whatsappUrl) {
-          window.location.href = data.whatsappUrl;
-        }
-      } else {
-        setErrorMsg(data.message || (language === 'ta' ? 'முன்பதிவு தோல்வியடைந்தது.' : 'Booking failed. Please try again.'));
-      }
-    } catch (err: any) {
-      console.error('Booking submission error:', err);
-      setErrorMsg(language === 'ta' ? 'இணைப்பு பிழை.' : 'Network error. Please check your internet connection.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Show success view just in case they navigate back
+    const bookingRecord = {
+      id: `REQ-${Date.now().toString().slice(-6)}`,
+      name,
+      pickup,
+      destination,
+      date,
+      whatsappUrl
+    };
+    
+    setConfirmedBooking(bookingRecord);
+    onBookingSuccess(bookingRecord);
+    setIsSubmitting(false);
+
+    // Redirect to WhatsApp immediately
+    window.location.href = whatsappUrl;
   };
 
   const handleReset = () => {
