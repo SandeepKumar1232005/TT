@@ -66,11 +66,6 @@ export default function Navbar({ onBookClick }: NavbarProps) {
               </div>
               <div className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-gradient-to-r from-gold via-white to-transparent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
             </div>
-            {/* Elegant luxury status dot */}
-            <span className="ml-2.5 flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold/50 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
-            </span>
           </div>
 
           {/* Desktop Navigation Links */}
