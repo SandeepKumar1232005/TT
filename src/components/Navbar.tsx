@@ -69,7 +69,7 @@ export default function Navbar({ onBookClick }: NavbarProps) {
           </div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-8 lg:ml-12">
+          <div className="hidden lg:flex items-center lg:space-x-5 xl:space-x-8 lg:ml-6 xl:ml-12">
             {[
               { label: t('nav.home'), id: 'home' },
               { label: t('nav.services'), id: 'services' },
@@ -91,10 +91,10 @@ export default function Navbar({ onBookClick }: NavbarProps) {
           </div>
 
           {/* Contact & Booking CTA elements + Language Switching Capsule (Features 1 & 3) */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 shrink-0 ml-4">
             
             {/* Elegant Language Switcher Capsule */}
-            <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-1 shadow-inner">
+            <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-1 shadow-inner shrink-0">
               <button
                 onClick={() => setLanguage('en')}
                 id="lang-btn-en"
